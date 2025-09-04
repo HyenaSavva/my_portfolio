@@ -11,6 +11,7 @@ export const Subtitle: FC<SubtitleProps> = ({
   label,
   className = "",
   active,
+  ...props
 }) => {
   const styles = twMerge(
     `${className} text-3xl font-semibold dark:text-gray-600 font-jetbrains ` +
@@ -18,5 +19,9 @@ export const Subtitle: FC<SubtitleProps> = ({
     className
   );
 
-  return <h2 className={styles}>{label}</h2>;
+  return (
+    <h2 className={styles} {...props}>
+      {label}
+    </h2>
+  );
 };

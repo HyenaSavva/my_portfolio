@@ -13,7 +13,8 @@ import {
   siChakraui,
   siMui,
   siAxios,
-  siGithub
+  siGithub,
+  siFramer,
 } from "simple-icons";
 
 export const tags: TagType[] = [
@@ -105,5 +106,17 @@ export const tags: TagType[] = [
     url: "https://axios-http.com/",
     icon: <Icon icon={siAxios} className="text-purple-400" />,
     color: "purple-400",
+  },
+  {
+    name: "Motion",
+    url: "https://motion.dev/",
+    icon: <Icon icon={siFramer} className="text-yellow-400" />,
+    color: "yellow-400",
+  },
+  {
+    name: "TanStack Query",
+    url: "https://tanstack.com/query/latest",
+    icon: <Icon icon={siRedux} className="text-yellow-400" />,
+    color: "yellow-400",
   },
 ];

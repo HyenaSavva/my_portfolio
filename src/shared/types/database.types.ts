@@ -82,6 +82,8 @@ export type Database = {
         | "Chakra UI"
         | "Material UI"
         | "Axios"
+        | "Motion"
+        | "TanStack Query"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -231,6 +233,8 @@ export const Constants = {
         "Chakra UI",
         "Material UI",
         "Axios",
+        "Motion",
+        "TanStack Query",
       ],
     },
   },

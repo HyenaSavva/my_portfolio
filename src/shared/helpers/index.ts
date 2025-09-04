@@ -11,10 +11,15 @@ export const formatDateRange = (
 
     if (isNaN(date.getTime())) return "Present";
 
-    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const monthNames = [
+      "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ];
+
+    const month = monthNames[date.getMonth()];
     const year = date.getFullYear();
 
-    return `${month}/${year}`;
+    return `${month} ${year}`;
   };
 
   const formattedFrom = formatDate(from);

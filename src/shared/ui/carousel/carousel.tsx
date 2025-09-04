@@ -15,7 +15,7 @@ export const Carousel: FC<CarouselProps> = ({ images }) => {
   const handleNext = () =>
     setCurrentIndex((prev) => (prev === images.length - 1 ? prev : prev + 1));
 
-  if (images.length === 0) return null;
+  if (images.length === 0) return <></>;
 
   return (
     <div className="grid [grid-template-areas:'stack'] w-full rounded-2xl bg-gray-900 overflow-hidden border-2 border-gray-500">

@@ -22,7 +22,7 @@ export const Experience: FC<ExperienceProps> = ({ experience }) => {
   return (
     <div className="group flex w-full">
       <ProgressView />
-      <section className="flex flex-col gap-3 py-12 px-10">
+      <section className="flex flex-col gap-3 pb-12 px-10">
         <Subtitle
           className="text-2xl"
           label={`${from} - ${to} * ${experience.type}`}
