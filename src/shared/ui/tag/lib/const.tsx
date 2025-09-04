@@ -1,0 +1,109 @@
+import { Icon } from "@/shared/ui";
+import {
+  siJavascript,
+  siReact,
+  siTypescript,
+  siNextdotjs,
+  siTailwindcss,
+  siPrimereact,
+  siRedux,
+  siFortnite,
+  siStyledcomponents,
+  siReacthookform,
+  siChakraui,
+  siMui,
+  siAxios,
+  siGithub
+} from "simple-icons";
+
+export const tags: TagType[] = [
+  {
+    name: "View on Github",
+    icon: <Icon icon={siGithub} className="text-gray-500" />,
+    color: "gray-500",
+  },
+  {
+    name: "JavaScript",
+    url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+    icon: <Icon icon={siJavascript} className="text-yellow-400" />,
+    color: "yellow-400",
+  },
+  {
+    name: "TypeScript",
+    url: "https://www.typescriptlang.org/",
+    icon: <Icon icon={siTypescript} className="text-blue-400" />,
+    color: "blue-400",
+  },
+  {
+    name: "React",
+    url: "https://reactjs.org/",
+    icon: <Icon icon={siReact} className="text-blue-400" />,
+    color: "blue-400",
+  },
+  {
+    name: "Next.js",
+    url: "https://nextjs.org/",
+    icon: <Icon icon={siNextdotjs} className="text-gray-800" />,
+    color: "gray-800",
+  },
+  {
+    name: "Tailwind CSS",
+    url: "https://tailwindcss.com/",
+    icon: <Icon icon={siTailwindcss} className="text-blue-400" />,
+    color: "blue-400",
+  },
+  {
+    name: "Redux Toolkit",
+    url: "https://redux-toolkit.js.org/",
+    icon: <Icon icon={siRedux} className="text-purple-400" />,
+    color: "purple-400",
+  },
+  {
+    name: "PrimeReact",
+    url: "https://www.primefaces.org/primereact/",
+    icon: <Icon icon={siPrimereact} className="text-cyan-600" />,
+    color: "cyan-600",
+  },
+  {
+    name: "Feature-Sliced Design",
+    url: "https://feature-sliced.design/",
+    icon: <Icon icon={siFortnite} className="text-cyan-600" />,
+    color: "cyan-600",
+  },
+  {
+    name: "Redux",
+    url: "https://redux.js.org/",
+    icon: <Icon icon={siRedux} className="text-purple-400" />,
+    color: "purple-400",
+  },
+  {
+    name: "styled-components",
+    url: "https://styled-components.com/",
+    icon: <Icon icon={siStyledcomponents} className="text-purple-400" />,
+    color: "purple-400",
+  },
+  {
+    name: "React Hook Form",
+    url: "https://react-hook-form.com/",
+    icon: <Icon icon={siReacthookform} className="text-pink-400" />,
+    color: "pink-400",
+  },
+  {
+    name: "Chakra UI",
+    url: "https://chakra-ui.com/",
+    icon: <Icon icon={siChakraui} className="text-blue-400" />,
+    color: "blue-400",
+  },
+  {
+    name: "Material UI",
+    url: "https://mui.com/",
+    icon: <Icon icon={siMui} className="text-blue-400" />,
+    color: "blue-400",
+  },
+  {
+    name: "Axios",
+    url: "https://axios-http.com/",
+    icon: <Icon icon={siAxios} className="text-purple-400" />,
+    color: "purple-400",
+  },
+];
