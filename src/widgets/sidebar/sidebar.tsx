@@ -1,5 +1,4 @@
-import { siGithub, siTelegram } from "simple-icons";
-import { motion } from "motion/react";
+import { siGithub } from "simple-icons";
 
 import { Link } from "@/features/link/link";
 import { Subtitle } from "@/shared/ui";
