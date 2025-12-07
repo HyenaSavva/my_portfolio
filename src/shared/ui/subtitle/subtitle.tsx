@@ -14,7 +14,7 @@ export const Subtitle: FC<SubtitleProps> = ({
   ...props
 }) => {
   const styles = twMerge(
-    `${className} text-3xl font-semibold dark:text-gray-600 font-jetbrains ` +
+    `${className} text-2xl s:text-3xl font-semibold dark:text-gray-600 font-jetbrains ` +
       (active ? "dark:text-gray-500" : ""),
     className
   );

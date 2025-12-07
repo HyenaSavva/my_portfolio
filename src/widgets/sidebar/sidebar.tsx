@@ -13,7 +13,7 @@ export const Sidebar = () => {
   ];
 
   return (
-    <div className="w-[512px] h-full px-16 py-20 flex flex-col justify-between border-r-2 border-gray-900 cursor-default">
+    <div className="w-0 s:w-[512px] h-full s:px-16 py-20 flex flex-col justify-between border-r-2 border-gray-900 cursor-default overflow-hidden">
       <section className="flex flex-col gap-1">
         <h1 className="text-5xl dark:text-white font-sand font-bold">
           Ghena Savva

@@ -12,7 +12,7 @@ export const ProgressView: FC = () => {
 
 export const ViewLine: FC<React.PropsWithChildren> = ({ children }) => {
   return (
-    <div className="flex flex-col w-[700px]">
+    <div className="flex flex-col s:w-[700px]">
       <div className="flex min-h-24 w-0.5 bg-gradient-to-t from-gray-800 to-gray-950" />
       {children}
       <div className="flex min-h-24 w-0.5 bg-gradient-to-b from-gray-800 to-gray-950" />

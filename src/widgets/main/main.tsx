@@ -17,7 +17,7 @@ export const Main = () => {
   );
 
   return (
-    <main className="flex p-16 overflow-auto flex-1 cursor-default">
+    <main className="flex p-4 s:p-16 overflow-auto flex-1 cursor-default">
       <div className="flex flex-col">
         <Subtitle
           className="mb-4"
