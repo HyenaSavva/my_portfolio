@@ -25,6 +25,7 @@ build
 .env.test.local
 .env.production.local
 package-lock.json
+bun.lock
 
 # Supabase
 supabase/.temp/

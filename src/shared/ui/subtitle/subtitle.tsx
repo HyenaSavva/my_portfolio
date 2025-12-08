@@ -1,5 +1,5 @@
 import type { FC, HTMLProps } from "react";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/shared/lib";
 
 type SubtitleProps = {
   label: string;
@@ -7,16 +7,11 @@ type SubtitleProps = {
   active?: boolean;
 } & HTMLProps<HTMLHeadingElement>;
 
-export const Subtitle: FC<SubtitleProps> = ({
-  label,
-  className = "",
-  active,
-  ...props
-}) => {
-  const styles = twMerge(
-    `${className} text-2xl s:text-3xl font-semibold dark:text-gray-600 font-jetbrains ` +
-      (active ? "dark:text-gray-500" : ""),
-    className
+export const Subtitle: FC<SubtitleProps> = ({ label, className, active, ...props }) => {
+  const styles = cn(
+    "text-2xl s:text-3xl font-semibold dark:text-gray-600 font-jetbrains",
+    active && "dark:text-gray-500",
+    className,
   );
 
   return (

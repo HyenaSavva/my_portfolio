@@ -11,9 +11,12 @@
     "types:sync": "supabase gen types typescript --debug --project-id $VITE_SUPABASE_PROJECT_ID > src/shared/types/database.types.ts"
   },
   "dependencies": {
+    "@fontsource-variable/jetbrains-mono": "^5.2.8",
+    "@fontsource-variable/quicksand": "^5.2.10",
     "@supabase/supabase-js": "^2.56.1",
     "@tailwindcss/vite": "^4.1.12",
     "@tanstack/react-query": "^5.85.6",
+    "clsx": "^2.1.1",
     "motion": "^12.23.12",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
@@ -34,6 +37,7 @@
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.39.1",
     "vite": "^7.1.2",
+    "vite-plugin-svgr": "^4.5.0",
     "vite-tsconfig-paths": "^5.1.4"
   }
 }
