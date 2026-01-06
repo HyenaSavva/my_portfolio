@@ -1,2 +1,1 @@
-import { Experience } from "./experience";
-export default Experience;
+export { Experience } from "./experience";

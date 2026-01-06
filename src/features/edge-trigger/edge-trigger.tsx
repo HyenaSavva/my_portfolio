@@ -15,12 +15,15 @@ export const EdgeTrigger: FC<EdgeTriggerProps> = ({ onTrigger, side = "left", cl
   return (
     <motion.div
       onClick={onTrigger}
+      initial={{ opacity: 0, x: isLeft ? -10 : 10 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: isLeft ? -10 : 10 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
       className={cn(
-        "fixed top-0 bottom-0 w-4 z-40 cursor-pointer group touch-manipulation",
+        "fixed top-0 bottom-0 w-4 z-(--z-above) cursor-pointer group touch-manipulation",
         isLeft ? "left-0" : "right-0",
         className,
       )}
-      initial="idle"
       whileHover="hover"
       whileTap="hover"
     >
@@ -34,6 +37,7 @@ export const EdgeTrigger: FC<EdgeTriggerProps> = ({ onTrigger, side = "left", cl
           idle: { opacity: alwaysVisible ? 0.5 : 0, scaleY: alwaysVisible ? 0.8 : 0.5 },
           hover: { opacity: 1, scaleY: 1 },
         }}
+        initial="idle"
         transition={{ duration: 0.15 }}
       />
     </motion.div>

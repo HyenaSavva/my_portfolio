@@ -1,11 +1,13 @@
 import type { FC } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { Drawer } from "vaul";
 import { siGithub } from "simple-icons";
+import { Link as RouterLink, useLocation } from "@tanstack/react-router";
 
 import { Link } from "@/features/link/link";
 import { EdgeTrigger } from "@/features/edge-trigger";
 import { Subtitle } from "@/shared/ui";
 import { useNavigation } from "@/shared/hooks";
+import { cn } from "@/shared/lib";
 
 type SidebarProps = {
   isOpen: boolean;
@@ -13,6 +15,8 @@ type SidebarProps = {
 };
 
 export const Sidebar: FC<SidebarProps> = ({ isOpen, onToggle }) => {
+  const { pathname } = useLocation();
+  const isHomePage = pathname === "/";
   const { activeSection, scrollToSection } = useNavigation();
 
   const navItems = [
@@ -20,64 +24,62 @@ export const Sidebar: FC<SidebarProps> = ({ isOpen, onToggle }) => {
     { id: "contact", label: "Contact" },
   ];
 
-  const handleNavClick = (id: string) => {
-    scrollToSection(id);
-    onToggle();
-  };
+  const content = (
+    <div className="h-full w-72 p-6 flex flex-col justify-between">
+      <section className="flex flex-col gap-1">
+        <h1 className="text-title text-white font-sand font-bold">Ghena Savva</h1>
+        <Subtitle label="Frontend Developer" active />
+        <Subtitle label="Moldova" className="text-body text-gray-600" />
+      </section>
+
+      <nav className="flex flex-col gap-4">
+        {isHomePage ? (
+          navItems.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => scrollToSection(item.id)}
+              className={cn(
+                "font-jetbrains text-nav text-left font-semibold transition-colors cursor-pointer",
+                activeSection === item.id ? "text-white" : "text-gray-500 hover:text-gray-300",
+              )}
+            >
+              {item.label}
+            </button>
+          ))
+        ) : (
+          <RouterLink to="/" className="font-jetbrains text-nav font-semibold text-gray-500 hover:text-white transition-colors">
+            &larr; Back to Portfolio
+          </RouterLink>
+        )}
+      </nav>
+
+      <section>
+        <Link href="https://github.com/HyenaSavva" icon={siGithub} label="HyenaSavva" />
+      </section>
+    </div>
+  );
 
   return (
     <>
-      {/* Edge trigger - always visible when closed */}
-      {!isOpen && <EdgeTrigger onTrigger={onToggle} alwaysVisible />}
+      {/* Desktop */}
+      <aside className="hidden lg:block shrink-0 bg-gray-950/50 border-r border-gray-800/50">
+        {content}
+      </aside>
 
-      <AnimatePresence>
-        {isOpen && (
-          <>
-            {/* Panel - fullscreen, slides from left */}
-            <motion.div
-              initial={{ x: "-100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
-              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-              className="fixed inset-0 z-40 bg-gray-950/90 backdrop-blur-md"
-            >
-              {/* Close trigger on right edge */}
-              <EdgeTrigger onTrigger={onToggle} side="right" alwaysVisible />
+      {/* Mobile */}
+      <div className="lg:hidden">
+        {!isOpen && <EdgeTrigger onTrigger={onToggle} alwaysVisible />}
 
-              <div className="h-full p-panel pt-16 flex flex-col justify-between cursor-default">
-                {/* Header */}
-                <section className="flex flex-col gap-1">
-                  <h1 className="text-title text-white font-sand font-bold">Ghena Savva</h1>
-                  <Subtitle label="Frontend Developer" active className="text-subtitle" />
-                  <Subtitle label="Moldova" className="text-body text-gray-600" />
-                </section>
-
-                {/* Navigation */}
-                <section className="flex flex-col gap-4">
-                  {navItems.map((item, index) => (
-                    <button
-                      key={item.id}
-                      onClick={() => handleNavClick(item.id)}
-                      className={`text-nav text-left font-semibold transition-all duration-300 cursor-pointer
-                        animate-[slideIn_0.3s_ease-out_forwards] opacity-0
-                        ${activeSection === item.id ? "text-white" : "text-gray-500"}
-                      `}
-                      style={{ animationDelay: `${index * 100}ms` }}
-                    >
-                      {item.label}
-                    </button>
-                  ))}
-                </section>
-
-                {/* Footer */}
-                <section className="flex flex-col gap-2">
-                  <Link href="https://github.com/HyenaSavva" icon={siGithub} label="HyenaSavva" />
-                </section>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+        <Drawer.Root open={isOpen} onOpenChange={(open) => !open && onToggle()} direction="left">
+          <Drawer.Portal>
+            <Drawer.Overlay className="fixed inset-0 z-(--z-modal) bg-black/60" />
+            <Drawer.Content className="fixed left-0 inset-y-0 z-(--z-modal) bg-gray-950 outline-none">
+              <Drawer.Title className="sr-only">Navigation</Drawer.Title>
+              {content}
+            </Drawer.Content>
+          </Drawer.Portal>
+        </Drawer.Root>
+      </div>
     </>
   );
 };

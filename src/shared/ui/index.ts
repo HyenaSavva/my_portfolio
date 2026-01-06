@@ -1,9 +1,10 @@
 export { Subtitle } from "./subtitle/subtitle";
 export { Icon, ExternalLinkIcon } from "./icon";
-export { ProgressView, ViewLine } from "./progress-view/progress-view";
 export { Title } from "./title/title";
 export { Arrow } from "./arrow/arrow";
 export { Tag } from "./tag/tag";
 export { Carousel } from "./carousel/carousel";
 export { Skeleton } from "./skeleton/skeleton";
 export { IconCrossfade } from "./icon-crossfade/icon-crossfade";
+export { TooltipProvider, useTooltip, FloatingTooltip } from "./tooltip";
+export { Minimap } from "./minimap";

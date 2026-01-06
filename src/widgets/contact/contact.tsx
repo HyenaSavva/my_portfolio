@@ -8,12 +8,8 @@ export const Contact: FC = () => {
     <section id="contact" className="mt-12">
       <Subtitle className="mb-8" label="Contact" active />
 
-      <div className="flex gap-3 pb-12 pl-10">
-        <Link
-          href="https://t.me/ghena_savva"
-          icon={siTelegram}
-          label="@ghena_savva"
-        />
+      <div className="flex gap-3 pb-12 flex-wrap">
+        <Link href="https://t.me/ghena_savva" icon={siTelegram} label="@ghena_savva" />
         <span className="mx-1 flex items-center px-2">
           <span className="w-1.5 h-1.5 rounded-full bg-gray-500 inline-block" />
         </span>
