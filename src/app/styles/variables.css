@@ -1,0 +1,96 @@
+@theme {
+  --font-jetbrains: "JetBrains Mono Variable";
+  --font-quicksand: "Quicksand Variable";
+
+  --color-primary: oklch(0.908 0.0088 265.99);
+
+  --color-experience: oklch(0.15 0.01 265.99);
+  --color-experience-highlight: oklch(0.15 0.03 265.99);
+
+  --color-background: oklch(0.0979 0.0293 265.99);
+
+  --color-bg-dark: oklch(0.9189 0 0);
+  --color-bg-light: oklch(0.3012 0 0);
+  --color-bg-body: oklch(0.1496 0 0);
+
+  --color-scrollbar-track: oklch(0.1496 0 0);
+  --color-scrollbar-thumb: oklch(0.4165 0 0);
+  --color-scrollbar-thumb-hover: oklch(0.5 0 0);
+  --color-scrollbar-thumb-active: oklch(0.6 0 0);
+
+  /* Shadows */
+  --inset-shadow-s:
+    inset 0 1px 2px oklch(1 0 0 / 18.8%), 0 1px 2px oklch(0 0 0 / 18.8%), 0 2px 4px oklch(0 0 0 / 8.82%);
+  --inset-shadow-m:
+    inset 0 1px 2px oklch(1 0 0 / 31.37%), 0 2px 4px oklch(0 0 0 / 18.8%), 0 4px 8px oklch(0 0 0 / 8.8%);
+  --inset-shadow-l:
+    inset 0 1px 2px oklch(1 0 0 / 44.31%), 0 4px 6px oklch(0 0 0 / 18.8%), 0 6px 10px oklch(0 0 0 / 8.8%);
+
+  /* Typography - responsive text sizes (ratio 2.4 = vw/min) */
+  --size-title: clamp(1.25rem, 3vw, 1.7rem);
+  --size-subtitle: clamp(0.875rem, 2.1vw, 1.25rem);
+  --size-nav: clamp(1.125rem, 2.7vw, 1.5rem);
+  --size-description: clamp(0.875rem, 2.1vw, 1rem);
+
+  /* Spacing */
+  --spacing-panel: clamp(1.5rem, 4vw, 2rem);
+
+  --breakpoint-ss: 360px;
+  --breakpoint-sm: 480px;
+  --breakpoint-m: 768px;
+
+  /* Z-index scale */
+  --z-above: 10;
+  --z-modal: 20;
+  --z-top: 30;
+}
+
+@utility center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@utility flex-col {
+  display: flex;
+}
+
+@utility items-center {
+  display: flex;
+}
+
+@utility justify-center {
+  display: flex;
+}
+
+@utility title {
+  font-family: var(--font-jetbrains);
+  font-weight: bold;
+  font-size: var(--size-title);
+  color: var(--color-primary);
+}
+
+@utility subtitle {
+  font-family: var(--font-jetbrains);
+  font-weight: 600;
+  font-size: var(--size-subtitle);
+  color: theme(colors.gray.600);
+}
+
+@utility description {
+  font-family: var(--font-jetbrains);
+  font-weight: 400;
+  font-size: var(--size-description);
+  color: theme(--color-primary);
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

@@ -1,8 +1,15 @@
 export { Subtitle } from "./subtitle/subtitle";
 export { Icon, ExternalLinkIcon } from "./icon";
-export { ProgressView, ViewLine } from "./progress-view/progress-view";
 export { Title } from "./title/title";
-export { Arrow } from "./arrow/arrow";
 export { Tag } from "./tag/tag";
 export { Carousel } from "./carousel/carousel";
 export { Skeleton } from "./skeleton/skeleton";
+export { IconCrossfade } from "./icon-crossfade/icon-crossfade";
+export { TooltipProvider, useTooltip, FloatingTooltip } from "./tooltip";
+export { Minimap } from "./minimap";
+export { Status } from "./status/status";
+export { ProjectMeta } from "./project-meta/project-meta";
+export { Image } from "./image/image";
+export { Video } from "./video/video";
+export { MediaModal } from "./media-modal";
+export { Greeting } from "./greeting/greeting";

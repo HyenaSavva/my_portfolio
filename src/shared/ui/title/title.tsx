@@ -1,15 +1,9 @@
 import type { FC } from "react";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/shared/lib";
 
 interface TitleProps {
   label: string;
   className?: string;
 }
 
-export const Title: FC<TitleProps> = ({ label, className }) => {
-  const styles = twMerge(
-    `font-sand font-bold text-4xl dark:text-white ${className}`
-  );
-
-  return <h1 className={styles}>{label}</h1>;
-};
+export const Title: FC<TitleProps> = ({ label, className }) => <h1 className={cn("title", className)}>{label}</h1>;

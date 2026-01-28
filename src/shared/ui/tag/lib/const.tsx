@@ -11,6 +11,7 @@ import {
   siStyledcomponents,
   siReacthookform,
   siChakraui,
+  siClaude,
   siMui,
   siAxios,
   siGithub,
@@ -118,5 +119,11 @@ export const tags: TagType[] = [
     url: "https://tanstack.com/query/latest",
     icon: <Icon icon={siRedux} className="text-yellow-400" />,
     color: "yellow-400",
+  },
+  {
+    name: "Claude",
+    url: "https://chakra-ui.com/",
+    icon: <Icon icon={siClaude} className="text-[#d97757]" />,
+    color: "[#d97757]",
   },
 ];

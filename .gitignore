@@ -25,6 +25,7 @@ build
 .env.test.local
 .env.production.local
 package-lock.json
+bun.lock
 
 # Supabase
 supabase/.temp/
@@ -50,6 +51,7 @@ Thumbs.db
 *.njsproj
 *.sln
 *.sw?
+*.md
 
 # Runtime data
 pids
@@ -66,3 +68,4 @@ pids
 # Temporary folders
 tmp/
 temp/
+docs/
