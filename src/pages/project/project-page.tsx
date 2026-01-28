@@ -1,54 +1,80 @@
 import type { FC } from "react";
+import { default as Markdown } from "react-markdown";
 import { Link, useParams, useRouter } from "@tanstack/react-router";
 
 import { useGetExperienceById } from "@/entities/experience";
-import { Subtitle, Tag, Title, Carousel } from "@/shared/ui";
+import { Subtitle, Tag, Title, Carousel, Status, ProjectMeta } from "@/shared/ui";
 import { formatDateRange } from "@/shared/helpers";
 import { supabase } from "@/shared/api";
 import { cn } from "@/shared/lib";
+import { ArrowLeftIcon } from "@/shared/assets";
 
 export const ProjectPage: FC = () => {
   const { id } = useParams({ from: "/project/$id" });
   const { history } = useRouter<Router>();
-  const { data, isLoading } = useGetExperienceById(id || "");
-
-  const experience = data?.data;
+  const { data: experience, isLoading } = useGetExperienceById(id || "");
 
   if (!isLoading && !experience) return <NotFound />;
 
-  const urls = experience?.img?.map((img) => supabase.storage.from("images").getPublicUrl(img));
   const [from, to] = experience ? formatDateRange(experience.from, experience.to) : ["", ""];
+  const media: MediaItem[] = [];
+
+  if (experience?.demo) {
+    const videoUrl = supabase.storage.from("video").getPublicUrl(experience.demo).data.publicUrl;
+    media.push({ type: "video", src: videoUrl });
+  }
+
+  experience?.img?.forEach((img) => {
+    const imageUrl = supabase.storage.from("images").getPublicUrl(img).data.publicUrl;
+    media.push({ type: "image", src: imageUrl });
+  });
 
   return (
-    <main className="flex-1 overflow-auto p-4 sm:p-6 lg:p-12">
+    <main className="flex-1 overflow-x-hidden p-3 sm:p-6 m:p-10 bg-background">
       <div className="max-w-4xl mx-auto">
         <button
           onClick={() => history.back()}
-          className="inline-flex items-center gap-2 text-gray-500 hover:text-white mb-6 transition-colors"
+          className={cn(
+            "flex items-center gap-2 text-gray-500 hover:text-white my-2 transition-colors cursor-pointer text-xs",
+            "group",
+          )}
         >
-          <span className="text-lg">&larr;</span>
+          <ArrowLeftIcon className="translate-x-1 group-hover:translate-x-0 group-active:translate-x-0 transition-transform" />
           <span>Back to Portfolio</span>
         </button>
 
         <article
           style={{ viewTransitionName: `experience-${id}` }}
-          className={cn(
-            "flex flex-col gap-4 rounded-xl p-6",
-            "bg-linear-to-tr from-experience to-experience-highlight",
-          )}
+          className={cn("flex flex-col gap-3 sm:gap-4 rounded-xl")}
         >
           {!isLoading && (
             <>
-              <Subtitle label={`${from} - ${to} * ${experience?.type}`} />
-              <Title label={experience?.title || ""} />
+              <div className="flex flex-col gap-3 sm:gap-4">
+                <div className="center gap-4 justify-start">
+                  {experience?.type && <Status type={experience.type} />}
+                  <Subtitle label={`${from} - ${to}`} />
+                </div>
 
-              {urls && urls.length > 0 && <Carousel images={urls.map(({ data: { publicUrl } }) => publicUrl)} />}
+                <Title label={experience?.title || ""} className="tracking-tight" />
+              </div>
 
-              <p className="text-body text-primary leading-relaxed">{experience?.description}</p>
+              {experience?.short_description && (
+                <p className="description leading-relaxed text-gray-500">{experience.short_description}</p>
+              )}
 
+              <ProjectMeta role={experience?.role} company={experience?.company} team={experience?.team} />
+
+              {media.length > 0 && <Carousel media={media} />}
+              <div className="flex">{experience?.link && <Tag tagName="View on Github" tagUrl={experience?.link} />}</div>
+
+              <Title label="Overview" />
+              <p className="description leading-relaxed text-gray-500 prose dark:prose-invert">
+                <Markdown>{experience?.description}</Markdown>
+              </p>
+
+              <Title label="Tech Stack" />
               {experience?.tags && experience.tags.length > 0 && (
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {experience.link && <Tag tagName="View on Github" tagUrl={experience.link} />}
+                <div className="flex flex-wrap gap-2">
                   {experience.tags.map((tag) => (
                     <Tag key={tag} tagName={tag} />
                   ))}

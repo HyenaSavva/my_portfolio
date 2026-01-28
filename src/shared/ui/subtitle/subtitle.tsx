@@ -8,10 +8,7 @@ type SubtitleProps = {
 } & HTMLProps<HTMLHeadingElement>;
 
 export const Subtitle: FC<SubtitleProps> = ({ label, className, active, ...props }) => (
-  <h2
-    className={cn("text-subtitle font-semibold text-gray-600 font-jetbrains", active && "text-gray-500", className)}
-    {...props}
-  >
+  <h2 className={cn("subtitle text-gray-600", active && "text-gray-500", className)} {...props}>
     {label}
   </h2>
 );

@@ -16,40 +16,70 @@ export type Database = {
     Tables: {
       experiences: {
         Row: {
+          company: string | null
           created_at: string
+          demo: string | null
           description: string | null
           from: string | null
           id: string
           img: string[] | null
           link: string | null
+          role: string | null
+          short_description: string | null
           tags: Database["public"]["Enums"]["technologies"][] | null
+          team: string | null
           title: string | null
           to: string | null
           type: Database["public"]["Enums"]["experience_type"] | null
         }
         Insert: {
+          company?: string | null
           created_at?: string
+          demo?: string | null
           description?: string | null
           from?: string | null
           id?: string
           img?: string[] | null
           link?: string | null
+          role?: string | null
+          short_description?: string | null
           tags?: Database["public"]["Enums"]["technologies"][] | null
+          team?: string | null
           title?: string | null
           to?: string | null
           type?: Database["public"]["Enums"]["experience_type"] | null
         }
         Update: {
+          company?: string | null
           created_at?: string
+          demo?: string | null
           description?: string | null
           from?: string | null
           id?: string
           img?: string[] | null
           link?: string | null
+          role?: string | null
+          short_description?: string | null
           tags?: Database["public"]["Enums"]["technologies"][] | null
+          team?: string | null
           title?: string | null
           to?: string | null
           type?: Database["public"]["Enums"]["experience_type"] | null
+        }
+        Relationships: []
+      }
+      positions: {
+        Row: {
+          created_at: string
+          id: number
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+        }
+        Update: {
+          created_at?: string
+          id?: number
         }
         Relationships: []
       }
@@ -84,6 +114,7 @@ export type Database = {
         | "Axios"
         | "Motion"
         | "TanStack Query"
+        | "Claude"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -235,6 +266,7 @@ export const Constants = {
         "Axios",
         "Motion",
         "TanStack Query",
+        "Claude",
       ],
     },
   },

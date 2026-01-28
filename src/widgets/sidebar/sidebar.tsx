@@ -3,7 +3,7 @@ import { Drawer } from "vaul";
 import { siGithub } from "simple-icons";
 import { Link as RouterLink, useLocation } from "@tanstack/react-router";
 
-import { Link } from "@/features/link/link";
+import { Link } from "@/features/link";
 import { EdgeTrigger } from "@/features/edge-trigger";
 import { Subtitle } from "@/shared/ui";
 import { useNavigation } from "@/shared/hooks";
@@ -25,9 +25,9 @@ export const Sidebar: FC<SidebarProps> = ({ isOpen, onToggle }) => {
   ];
 
   const content = (
-    <div className="h-full w-72 p-6 flex flex-col justify-between">
+    <div className="h-full w-96 p-6 flex flex-col justify-between">
       <section className="flex flex-col gap-1">
-        <h1 className="text-title text-white font-sand font-bold">Ghena Savva</h1>
+        <h1 className="text-title text-white font-bold">Ghena Savva</h1>
         <Subtitle label="Frontend Developer" active />
         <Subtitle label="Moldova" className="text-body text-gray-600" />
       </section>
@@ -47,7 +47,11 @@ export const Sidebar: FC<SidebarProps> = ({ isOpen, onToggle }) => {
             </button>
           ))
         ) : (
-          <RouterLink to="/" className="font-jetbrains text-nav font-semibold text-gray-500 hover:text-white transition-colors">
+          <RouterLink
+            to="/"
+            className="font-jetbrains text-nav font-semibold text-gray-500 hover:text-white transition-colors"
+            preload="viewport"
+          >
             &larr; Back to Portfolio
           </RouterLink>
         )}
@@ -61,12 +65,8 @@ export const Sidebar: FC<SidebarProps> = ({ isOpen, onToggle }) => {
 
   return (
     <>
-      {/* Desktop */}
-      <aside className="hidden lg:block shrink-0 bg-gray-950/50 border-r border-gray-800/50">
-        {content}
-      </aside>
+      <aside className="hidden lg:block shrink-0 bg-gray-950/50 border-r border-gray-800/50">{content}</aside>
 
-      {/* Mobile */}
       <div className="lg:hidden">
         {!isOpen && <EdgeTrigger onTrigger={onToggle} alwaysVisible />}
 

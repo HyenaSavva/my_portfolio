@@ -51,6 +51,7 @@ Thumbs.db
 *.njsproj
 *.sln
 *.sw?
+*.md
 
 # Runtime data
 pids

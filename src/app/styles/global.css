@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 @import "./fonts.css";
 @import "./variables.css";
 
@@ -12,32 +13,8 @@ body {
   background-color: var(--color-bg-body);
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-scrollbar-track);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-scrollbar-thumb);
-  border-radius: 4px;
-  border: 1px solid oklch(0.2 0 0);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-scrollbar-thumb-hover);
-}
-
-::-webkit-scrollbar-thumb:active {
-  background: var(--color-scrollbar-thumb-active);
-}
-
-::-webkit-scrollbar-corner {
-  background: var(--color-scrollbar-track);
+* {
+  scrollbar-width: none;
 }
 
 /* View Transitions API - route transitions */

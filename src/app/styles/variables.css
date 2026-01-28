@@ -19,16 +19,18 @@
   --color-scrollbar-thumb-active: oklch(0.6 0 0);
 
   /* Shadows */
-  --inset-shadow-s: inset 0 1px 2px oklch(1 0 0 / 18.8%), 0 1px 2px oklch(0 0 0 / 18.8%), 0 2px 4px oklch(0 0 0 / 8.82%);
-  --inset-shadow-m: inset 0 1px 2px oklch(1 0 0 / 31.37%), 0 2px 4px oklch(0 0 0 / 18.8%), 0 4px 8px oklch(0 0 0 / 8.8%);
-  --inset-shadow-l: inset 0 1px 2px oklch(1 0 0 / 44.31%), 0 4px 6px oklch(0 0 0 / 18.8%),
-    0 6px 10px oklch(0 0 0 / 8.8%);
+  --inset-shadow-s:
+    inset 0 1px 2px oklch(1 0 0 / 18.8%), 0 1px 2px oklch(0 0 0 / 18.8%), 0 2px 4px oklch(0 0 0 / 8.82%);
+  --inset-shadow-m:
+    inset 0 1px 2px oklch(1 0 0 / 31.37%), 0 2px 4px oklch(0 0 0 / 18.8%), 0 4px 8px oklch(0 0 0 / 8.8%);
+  --inset-shadow-l:
+    inset 0 1px 2px oklch(1 0 0 / 44.31%), 0 4px 6px oklch(0 0 0 / 18.8%), 0 6px 10px oklch(0 0 0 / 8.8%);
 
-  /* Typography - responsive text sizes */
-  --text-title: clamp(1.75rem, 5vw, 2.5rem);
-  --text-subtitle: clamp(0.875rem, 2.5vw, 1.25rem);
-  --text-nav: clamp(1.125rem, 3vw, 1.5rem);
-  --text-body: clamp(0.875rem, 2vw, 1rem);
+  /* Typography - responsive text sizes (ratio 2.4 = vw/min) */
+  --size-title: clamp(1.25rem, 3vw, 1.7rem);
+  --size-subtitle: clamp(0.875rem, 2.1vw, 1.25rem);
+  --size-nav: clamp(1.125rem, 2.7vw, 1.5rem);
+  --size-description: clamp(0.875rem, 2.1vw, 1rem);
 
   /* Spacing */
   --spacing-panel: clamp(1.5rem, 4vw, 2rem);
@@ -41,6 +43,45 @@
   --z-above: 10;
   --z-modal: 20;
   --z-top: 30;
+}
+
+@utility center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@utility flex-col {
+  display: flex;
+}
+
+@utility items-center {
+  display: flex;
+}
+
+@utility justify-center {
+  display: flex;
+}
+
+@utility title {
+  font-family: var(--font-jetbrains);
+  font-weight: bold;
+  font-size: var(--size-title);
+  color: var(--color-primary);
+}
+
+@utility subtitle {
+  font-family: var(--font-jetbrains);
+  font-weight: 600;
+  font-size: var(--size-subtitle);
+  color: theme(colors.gray.600);
+}
+
+@utility description {
+  font-family: var(--font-jetbrains);
+  font-weight: 400;
+  font-size: var(--size-description);
+  color: theme(--color-primary);
 }
 
 @keyframes slideIn {

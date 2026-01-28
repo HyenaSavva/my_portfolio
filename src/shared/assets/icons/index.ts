@@ -1,4 +1,4 @@
-export { default as MenuIcon } from "./menu.svg?react";
-export { default as CloseIcon } from "./close.svg?react";
-export { default as FormatListBulletedIcon } from "./format-list-bulleted.svg?react";
-export { default as GroupIcon } from "./group.svg?react";
+export { default as CogIcon } from "./cog.svg?react";
+export { default as TeamIcon } from "./team.svg?react";
+export { default as CompanyIcon } from "./company.svg?react";
+export { default as ArrowLeftIcon } from "./arrow-left.svg?react";

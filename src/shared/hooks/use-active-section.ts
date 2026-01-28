@@ -1,39 +1,52 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
-type Options = {
-  containerId?: string;
-  rootMargin?: string;
+interface Options {
   attribute?: string;
-};
+  containerId?: string;
+}
 
 export const useActiveSection = (
   sectionIds: string[],
-  { containerId = "main-content", rootMargin = "-40% 0px -40% 0px", attribute = "id" }: Options = {},
+  { attribute = "data-experience-id", containerId = "main-content" }: Options = {},
 ) => {
   const [activeId, setActiveId] = useState(sectionIds[0] || "");
 
+  const updateActive = useCallback(() => {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    const containerRect = container.getBoundingClientRect();
+    const containerCenter = containerRect.top + containerRect.height / 2;
+
+    let closestId = sectionIds[0];
+    let closestDistance = Infinity;
+
+    for (const id of sectionIds) {
+      const el = document.querySelector(`[${attribute}="${id}"]`);
+      if (!el) continue;
+
+      const rect = el.getBoundingClientRect();
+      const elementCenter = rect.top + rect.height / 2;
+      const distance = Math.abs(elementCenter - containerCenter);
+
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestId = id;
+      }
+    }
+
+    setActiveId(closestId);
+  }, [sectionIds, attribute, containerId]);
+
   useEffect(() => {
     const container = document.getElementById(containerId);
-    if (!container || !sectionIds.length) return;
+    if (!container) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.find((e) => e.isIntersecting);
-        if (!visible) return;
+    updateActive();
 
-        const id = visible.target.getAttribute(attribute);
-        if (id && sectionIds.includes(id)) setActiveId(id);
-      },
-      { root: container, rootMargin },
-    );
-
-    sectionIds.forEach((id) => {
-      const el = document.querySelector(`[${attribute}="${id}"]`);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, [sectionIds, containerId, rootMargin, attribute]);
+    container.addEventListener("scroll", updateActive, { passive: true });
+    return () => container.removeEventListener("scroll", updateActive);
+  }, [updateActive, containerId]);
 
   return activeId;
 };

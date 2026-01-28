@@ -6,6 +6,4 @@ interface TitleProps {
   className?: string;
 }
 
-export const Title: FC<TitleProps> = ({ label, className }) => (
-  <h1 className={cn("font-sand font-bold text-title text-primary", className)}>{label}</h1>
-);
+export const Title: FC<TitleProps> = ({ label, className }) => <h1 className={cn("title", className)}>{label}</h1>;

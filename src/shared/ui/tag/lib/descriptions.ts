@@ -16,4 +16,5 @@ export const tagDescriptions: Record<string, string> = {
   Motion: "Production-ready animation library for React",
   "TanStack Query": "Async state management for data fetching",
   "View on Github": "View source code on GitHub",
+  Claude: "AI agent for software development"
 };
